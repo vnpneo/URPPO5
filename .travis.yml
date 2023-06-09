@@ -9,4 +9,7 @@ jobs:
         - pip3 install --upgrade pip
         - pip install -r requirements.txt
       script:
-        - ./script.sh
+        find . -name "*.py" -print0 | xargs -0 flake8 --format='%(path)s::%(row)d::%(text)s'
+
+
+flake8 --format=%(path)s::%(row)d,%(col)d::%(code)s::%(text)s shadowtest
